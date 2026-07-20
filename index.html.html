@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victoria Kashtanava | Fractional COO & Revenue Systems Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            burgundy: '#500B1D',      // Exact rich burgundy from blazer & banner
+                            burgundyDark: '#2A030C',  // Deeper background burgundy
+                            gold: '#DFBA73',          // Warm golden glow tone
+                            goldLight: '#F5D082',     // Hover golden tone
+                            silk: '#F5EFEB',          // Soft silk-beige backdrop
+                            silkDark: '#E6DCD5',      // Warm beige border tone
+                            dark: '#1C040A',          // Contrast near-black burgundy
+                            white: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            background-color: #F5EFEB; 
+            color: #1C040A; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #DFBA73 0%, #C5A059 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-burgundy-gradient {
+            background: linear-gradient(135deg, #500B1D 0%, #2E030E 100%);
+        }
+        .premium-card {
+            background: #FFFFFF;
+            border: 1px solid #E6DCD5;
+            box-shadow: 0 4px 30px rgba(80, 11, 29, 0.02);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .premium-card:hover {
+            border-color: #DFBA73;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(80, 11, 29, 0.06);
+        }
+        .choice-card {
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- STREAMING_CHUNK: Formatting navigation component ... -->
+    <nav class="fixed top-0 w-full z-50 bg-brand-silk/90 backdrop-blur-md border-b border-brand-silkDark/50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="font-bold text-xl tracking-wider text-brand-burgundy border-r border-brand-burgundy/20 pr-3">VK</span>
+                <span class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-burgundy/80" data-translate="nav-title">Systems Architect</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-xs font-semibold uppercase tracking-[0.15em] text-brand-burgundy/70">
+                <a href="#about" class="hover:text-brand-gold transition" data-translate="nav-about">About</a>
+                <a href="#assessment-section" class="hover:text-brand-gold transition" data-translate="nav-diagnostic">Assessment</a>
+                <a href="#framework" class="hover:text-brand-gold transition" data-translate="nav-framework">Framework</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <!-- Language Switcher Buttons -->
+                <div class="flex bg-brand-silkDark/50 p-1 rounded-sm border border-brand-silkDark text-xs font-bold">
+                    <button id="lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 rounded-sm bg-brand-burgundy text-brand-white transition-all">EN</button>
+                    <button id="lang-ru" onclick="setLanguage('ru')" class="px-2.5 py-1 rounded-sm text-brand-burgundy/60 transition-all">RU</button>
+                </div>
+                
+                <a href="#assessment-section" class="px-5 py-2.5 bg-brand-burgundy text-brand-white text-xs font-bold uppercase tracking-widest rounded-sm hover:bg-brand-dark transition-all duration-300" data-translate="nav-btn">
+                    Start Assessment
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- STREAMING_CHUNK: Building header section ... -->
+    <header class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-8">
+                <div class="inline-block px-4 py-1.5 border border-brand-burgundy/20 bg-brand-burgundy/5 text-brand-burgundy text-xs font-bold uppercase tracking-[0.25em] rounded-sm" data-translate="hero-badge">
+                    Fractional COO & Revenue Systems Architect
+                </div>
+                <h1 class="text-4xl md:text-6xl text-brand-burgundy font-extrabold leading-tight tracking-tight">
+                    <span data-translate="hero-title-1">I help B2B founders bridge the gap between</span> <span class="italic text-brand-gold" data-translate="hero-title-2">strategy</span> <span data-translate="hero-title-3">and</span> <span class="text-gold-gradient" data-translate="hero-title-4">execution.</span>
+                </h1>
+                <p class="text-lg text-brand-burgundy/80 max-w-xl leading-relaxed font-light" data-translate="hero-desc">
+                    Build a business that grows without depending on you.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="#assessment-section" class="px-8 py-4 bg-brand-burgundy text-brand-white text-center rounded-sm font-bold uppercase text-xs tracking-widest hover:bg-brand-dark transition duration-300 shadow-lg" data-translate="hero-cta-1">
+                        Start the 2-Minute Assessment
+                    </a>
+                    <a href="#framework" class="px-8 py-4 border border-brand-burgundy/30 text-brand-burgundy text-center rounded-sm font-bold uppercase text-xs tracking-widest hover:bg-brand-burgundy hover:text-brand-white transition duration-300" data-translate="hero-cta-2">
+                        Our Framework
+                    </a>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-5 relative">
+                <div class="absolute -inset-2 bg-brand-gold/15 rounded-xl blur-lg"></div>
+                <div class="relative rounded-xl overflow-hidden shadow-2xl border-4 border-brand-white bg-brand-burgundy">
+                    <div id="fallback-hero-card" class="p-10 text-brand-white space-y-6 bg-burgundy-gradient text-center">
+                        <div class="w-24 h-24 rounded-full border-2 border-brand-gold mx-auto flex items-center justify-center bg-brand-burgundy">
+                            <span class="text-3xl text-brand-gold font-bold">VK</span>
+                        </div>
+                        <h3 class="text-2xl text-brand-gold font-bold">Victoria Kashtanava</h3>
+                        <p class="text-sm text-brand-silk/80" data-translate="fallback-text">Predictable LinkedIn outreach requires structured operations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- STREAMING_CHUNK: Setting up interactive assessment logic ... -->
+    <section id="assessment-section" class="py-20 px-6 bg-brand-white border-y border-brand-silkDark/60">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Assessment Container Box -->
+            <div class="bg-brand-silk/30 border border-brand-silkDark/60 rounded-xl p-8 md:p-12 shadow-sm min-h-[500px] flex flex-col justify-between">
+                
+                <!-- STEP 0: STARTING INTRO SCREEN -->
+                <div id="step-intro" class="space-y-6 text-center my-auto">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-burgundy" data-translate="calc-heading">Business Growth Readiness Assessment</h2>
+                    <p class="text-brand-burgundy/80 text-lg max-w-xl mx-auto font-light" data-translate="calc-subheading">
+                        Discover where your business is losing growth opportunities — and what to fix first.
+                    </p>
+                    <div class="pt-6">
+                        <button onclick="startAssessment()" class="px-8 py-4 bg-brand-burgundy hover:bg-brand-dark text-brand-white font-bold uppercase text-xs tracking-widest rounded transition duration-200 shadow-md">
+                            <span data-translate="start-assessment-btn">Start the 2-Minute Assessment</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEPS 1-5: MULTI-STEP QUESTIONS -->
+                <div id="step-question-container" class="hidden space-y-8">
+                    <!-- Progress Bar Header -->
+                    <div class="flex justify-between items-center border-b border-brand-silkDark pb-4">
+                        <span class="text-xs uppercase tracking-widest font-bold text-brand-burgundy/60">
+                            <span data-translate="question-step-label">Question</span> <span id="current-step-num">1</span> <span data-translate="question-of-label">of</span> 5
+                        </span>
+                        <div class="w-32 bg-brand-silkDark/50 h-2 rounded-full overflow-hidden">
+                            <div id="progress-bar-fill" class="bg-brand-gold h-full transition-all duration-300" style="width: 20%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Question Area -->
+                    <div class="space-y-6">
+                        <h3 class="text-xl md:text-2xl font-bold text-brand-burgundy" id="assessment-question-text">Loading question...</h3>
+                        
+                        <!-- Choice Cards Layout -->
+                        <div class="grid grid-cols-1 gap-4" id="choices-container">
+                            <!-- Options will be generated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Navigation Action Buttons -->
+                    <div class="flex justify-between items-center pt-4 border-t border-brand-silkDark/40">
+                        <button id="prev-btn" onclick="prevStep()" class="px-6 py-2.5 border border-brand-burgundy/20 text-brand-burgundy text-xs font-bold uppercase tracking-widest rounded hover:bg-brand-silk/50 transition">
+                            Back
+                        </button>
+                        <button id="next-btn" onclick="nextStep()" disabled class="px-8 py-3 bg-brand-burgundy text-brand-white text-xs font-bold uppercase tracking-widest rounded hover:bg-brand-dark transition disabled:opacity-40 disabled:cursor-not-allowed">
+                            Next
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 6: DYNAMIC REPORT RESULTS SCREEN -->
+                <div id="step-results" class="hidden space-y-8">
+                    <div class="text-center space-y-3">
+                        <div class="text-xs uppercase tracking-widest font-bold text-brand-gold" data-translate="assessment-complete-tag">Assessment Complete</div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-brand-burgundy" data-translate="results-main-title">Your Growth Readiness Score</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-6">
+                        <!-- Score Display and Actionable Details -->
+                        <div class="lg:col-span-7 space-y-6">
+                            <div class="flex items-center space-x-6 bg-brand-white p-6 rounded-lg border border-brand-silkDark/60 shadow-sm">
+                                <div class="text-5xl font-extrabold text-brand-burgundy" id="final-score-percent">50%</div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-brand-burgundy" id="readiness-level-title">Growth Constrained</h4>
+                                    <p class="text-xs text-brand-burgundy/70 mt-1 leading-relaxed" id="readiness-level-desc">Loading score analysis...</p>
+                                </div>
+                            </div>
+
+                            <!-- Primary Bottleneck Card -->
+                            <div class="bg-brand-burgundy text-brand-white p-6 rounded-lg space-y-4 shadow-md relative overflow-hidden">
+                                <div class="absolute -right-12 -bottom-12 w-32 h-32 bg-brand-gold/10 rounded-full blur-xl"></div>
+                                <div class="space-y-1">
+                                    <span class="text-[10px] uppercase tracking-widest text-brand-gold font-bold" data-translate="primary-bottleneck-label">Your primary bottleneck</span>
+                                    <h3 class="text-2xl font-bold text-brand-gold" id="bottleneck-title">Founder Dependence</h3>
+                                </div>
+                                <p class="text-sm leading-relaxed text-brand-silk/90" id="bottleneck-explanation">
+                                    Loading dynamic explanation details...
+                                </p>
+                                <div class="pt-2 border-t border-brand-white/10 space-y-1">
+                                    <span class="text-[10px] uppercase tracking-widest text-brand-gold/75 font-bold" data-translate="costing-you-label">What this may be costing you</span>
+                                    <ul class="text-xs space-y-1 text-brand-silk/80 list-disc list-inside" id="cost-bullets">
+                                        <!-- Cost bullets go here -->
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Resolution Roadmap Card -->
+                            <div class="bg-brand-white border border-brand-silkDark/80 p-6 rounded-lg space-y-4 shadow-sm">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <h5 class="text-xs uppercase tracking-widest text-brand-burgundy/60 font-bold" data-translate="first-priority-label">Your first priority</h5>
+                                        <p class="text-sm font-bold text-brand-burgundy mt-1" id="first-priority-desc">Define decision ownership and document workflows.</p>
+                                    </div>
+                                    <div>
+                                        <h5 class="text-xs uppercase tracking-widest text-brand-burgundy/60 font-bold" data-translate="rec-service-label">Recommended service</h5>
+                                        <p class="text-sm font-bold text-brand-gold mt-1" id="rec-service-desc">Operating System Design</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Live Action Panel & Interactive Radar Chart -->
+                        <div class="lg:col-span-5 space-y-6">
+                            <div class="bg-brand-silkDark/30 p-6 rounded-lg border border-brand-silkDark/60 flex flex-col items-center justify-center">
+                                <div class="w-full h-48 relative">
+                                    <canvas id="resultRadarChart"></canvas>
+                                </div>
+                            </div>
+
+                            <!-- Call To Action Button Panel -->
+                            <div class="space-y-3">
+                                <button onclick="sendResultsToVictoria()" class="w-full py-4 bg-brand-burgundy hover:bg-brand-dark text-brand-white font-bold uppercase text-xs tracking-widest rounded transition duration-200 shadow-md flex items-center justify-center space-x-2">
+                                    <i class="fa-solid fa-paper-plane text-brand-gold"></i>
+                                    <span data-translate="send-results-btn">Send My Results to Victoria</span>
+                                </button>
+                                <p class="text-[11px] text-center text-brand-burgundy/70 leading-relaxed max-w-xs mx-auto" data-translate="cta-subtext">
+                                    I’ll review your primary bottleneck and send you one practical recommendation.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TOAST NOTIFICATION POPUP -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-brand-burgundy border-2 border-brand-gold text-brand-white px-6 py-4 rounded-md shadow-2xl opacity-0 transform translate-y-10 pointer-events-none transition-all duration-300 z-50 flex items-center space-x-3">
+        <i class="fa-solid fa-check-circle text-brand-gold text-lg"></i>
+        <span class="text-xs font-bold uppercase tracking-wider" id="toast-text">Report Copied! Opening LinkedIn...</span>
+    </div>
+
+    <!-- STREAMING_CHUNK: Integrating business process framework documentation ... -->
+    <section id="framework" class="py-24 px-6 bg-brand-silk/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-20">
+                <span class="text-xs font-bold uppercase tracking-[0.3em] text-brand-burgundy" data-translate="framework-badge">Business Growth System</span>
+                <h2 class="text-3xl md:text-5xl text-brand-burgundy mt-3 font-bold" data-translate="framework-title">The Architecture of Scale</h2>
+                <div class="w-20 h-1 bg-brand-gold mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="premium-card p-10 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 rounded-sm bg-brand-burgundy/5 flex items-center justify-center border border-brand-gold/30">
+                            <i class="fa-solid fa-magnifying-glass-chart text-brand-burgundy text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl text-brand-burgundy font-bold" data-translate="service-1-title">Diagnose — Operational Audit</h3>
+                        <p class="text-sm text-brand-burgundy/75 leading-relaxed font-light" data-translate="service-1-desc">
+                            Uncovering the hidden bottlenecks stopping your scale. We do a deep diagnostic dive into your internal team capabilities, software stack, and processes before you burn money on marketing.
+                        </p>
+                    </div>
+                    <div class="pt-8 border-t border-brand-silkDark/50 mt-8">
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-gold" data-translate="service-1-step">Step 1: Diagnostics</span>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="premium-card p-10 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 rounded-sm bg-brand-burgundy/5 flex items-center justify-center border border-brand-gold/30">
+                            <i class="fa-solid fa-chart-line text-brand-burgundy text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl text-brand-burgundy font-bold" data-translate="service-2-title">Build — Operating System</h3>
+                        <p class="text-sm text-brand-burgundy/75 leading-relaxed font-light" data-translate="service-2-desc">
+                            Designing the internal operating system that keeps your team aligned, accountable, and consistent. We turn undocumented knowledge into clear processes, SOPs, and accountable workflows.
+                        </p>
+                    </div>
+                    <div class="pt-8 border-t border-brand-silkDark/50 mt-8">
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-gold" data-translate="service-2-step">Step 2: Operations</span>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="premium-card p-10 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 rounded-sm bg-brand-burgundy/5 flex items-center justify-center border border-brand-gold/30">
+                            <i class="fa-solid fa-diagram-project text-brand-burgundy text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl text-brand-burgundy font-bold" data-translate="service-3-title">Scale — Revenue System</h3>
+                        <p class="text-sm text-brand-burgundy/75 leading-relaxed font-light" data-translate="service-3-desc">
+                            Building an integrated revenue system using sales processes, CRM, automation, and LinkedIn to create predictable, measurable growth.
+                        </p>
+                    </div>
+                    <div class="pt-8 border-t border-brand-silkDark/50 mt-8">
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-gold" data-translate="service-3-step">Step 3: Growth</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STREAMING_CHUNK: Formatting profile bio block ... -->
+    <section id="about" class="py-24 px-6 bg-burgundy-gradient text-brand-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(223,186,115,0.08),transparent_50%)]"></div>
+        
+        <div class="max-w-4xl mx-auto text-center space-y-12 relative z-10">
+            <div class="w-24 h-24 rounded-full border-2 border-brand-gold p-1 mx-auto bg-brand-dark">
+                <div class="w-full h-full bg-brand-burgundy rounded-full flex items-center justify-center text-2xl text-brand-gold font-bold">VK</div>
+            </div>
+
+            <div class="space-y-4">
+                <h2 class="text-4xl md:text-5xl text-brand-gold font-bold">Victoria Kashtanava</h2>
+                <p class="text-sm uppercase tracking-[0.3em] text-brand-silk/80 font-bold" data-translate="bio-subtitle">Fractional COO | Gdańsk / Remote</p>
+            </div>
+
+            <p class="text-xl text-brand-silk/90 font-light max-w-2xl mx-auto leading-relaxed" data-translate="bio-quote">
+                "A business should not depend on its founder to function. My role is to build the systems that allow it to grow with clarity, consistency, and control."
+            </p>
+
+            <div class="pt-4">
+                <a href="https://www.linkedin.com" target="_blank" class="inline-block px-12 py-5 bg-brand-gold hover:bg-brand-goldLight text-brand-burgundy font-bold uppercase text-xs tracking-[0.3em] rounded shadow-2xl transition duration-300" data-translate="bio-cta">
+                    Book Operational Audit
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-brand-dark text-brand-silk/40 text-center text-[10px] uppercase tracking-[0.4em] border-t border-brand-white/5">
+        © 2026 Victoria Kashtanava. Revenue Systems & B2B Operations. All rights reserved.
+    </footer>
+
+    <!-- STREAMING_CHUNK: Implementing localization structures and scoring algorithms ... -->
+    <script>
+        // Localization Dictionary System
+        const translations = {
+            en: {
+                "nav-title": "Systems Architect",
+                "nav-about": "About",
+                "nav-diagnostic": "Assessment",
+                "nav-framework": "Framework",
+                "nav-btn": "Start Assessment",
+                "hero-badge": "Fractional COO & Revenue Systems Architect",
+                "hero-title-1": "I help B2B founders bridge the gap between",
+                "hero-title-2": "strategy",
+                "hero-title-3": "and",
+                "hero-title-4": "execution.",
+                "hero-desc": "Build a business that grows without depending on you.",
+                "hero-cta-1": "Start the 2-Minute Assessment",
+                "hero-cta-2": "Our Framework",
+                "fallback-text": "Predictable LinkedIn outreach requires structured operations.",
+                "calc-heading": "Business Growth Readiness Assessment",
+                "calc-subheading": "Discover where your business is losing growth opportunities — and what to fix first.",
+                "start-assessment-btn": "Start the 2-Minute Assessment",
+                "question-step-label": "Question",
+                "question-of-label": "of",
+                "assessment-complete-tag": "Assessment Complete",
+                "results-main-title": "Your Growth Readiness Score",
+                "primary-bottleneck-label": "Your primary bottleneck",
+                "costing-you-label": "What this may be costing you",
+                "first-priority-label": "Your first priority",
+                "rec-service-label": "Recommended service",
+                "send-results-btn": "Send My Results to Victoria",
+                "cta-subtext": "I’ll review your primary bottleneck and send you one practical recommendation.",
+                "framework-badge": "Business Growth System",
+                "framework-title": "The Architecture of Scale",
+                "service-1-title": "Diagnose — Operational Audit",
+                "service-1-desc": "Uncovering the hidden bottlenecks stopping your scale. We do a deep diagnostic dive into your internal team capabilities, software stack, and processes before you burn money on marketing.",
+                "service-1-step": "Step 1: Diagnostics",
+                "service-2-title": "Build — Operating System",
+                "service-2-desc": "Designing the internal operating system that keeps your team aligned, accountable, and consistent. We turn undocumented knowledge into clear processes, SOPs, and accountable workflows.",
+                "service-2-step": "Step 2: Operations",
+                "service-3-title": "Scale — Revenue System",
+                "service-3-desc": "Building an integrated revenue system using sales processes, CRM, automation, and LinkedIn to create predictable, measurable growth.",
+                "service-3-step": "Step 3: Growth",
+                "bio-subtitle": "Fractional COO | Gdańsk / Remote",
+                "bio-quote": "\"A business should not depend on its founder to function. My role is to build the systems that allow it to grow with clarity, consistency, and control.\"",
+                "bio-cta": "Book Operational Audit",
+                "toast-success": "Results copied! Ready to paste into LinkedIn message.",
+                "toast-failed": "Copy failed. Please copy manually.",
+                "chart-labels": ['Revenue Process', 'Operations & SOPs', 'Client Delivery', 'Performance Visibility', 'Team Autonomy']
+            },
+            ru: {
+                "nav-title": "Архитектор Систем",
+                "nav-about": "Обо мне",
+                "nav-diagnostic": "Оценка систем",
+                "nav-framework": "Методология",
+                "nav-btn": "Начать Оценку",
+                "hero-badge": "Fractional COO & Архитектор Систем Лидогенерации",
+                "hero-title-1": "Я помогаю B2B-фаундерам сократить разрыв между",
+                "hero-title-2": "стратегией",
+                "hero-title-3": "и",
+                "hero-title-4": "реальным результатом.",
+                "hero-desc": "Остановите хаос масштабирования. Постройте бизнес, работающий на предсказуемых, автоматизированных операциях и стандартных регламентах вместо постоянного контроля основателя.",
+                "hero-cta-1": "Начать оценку систем (2 минуты)",
+                "hero-cta-2": "Наша методология",
+                "fallback-text": "Предсказуемые продажи в LinkedIn требуют четкой архитектуры процессов.",
+                "calc-heading": "Оценка Готовности Бизнеса к Росту",
+                "calc-subheading": "Узнайте, на каких процессах ваш бизнес теряет возможности роста — и что исправить в первую очередь.",
+                "start-assessment-btn": "Начать оценку систем (2 минуты)",
+                "question-step-label": "Вопрос",
+                "question-of-label": "из",
+                "assessment-complete-tag": "Диагностика завершена",
+                "results-main-title": "Готовность вашего бизнеса к масштабированию",
+                "primary-bottleneck-label": "Главное узкое место вашей системы",
+                "costing-you-label": "Чего это вам сейчас стоит",
+                "first-priority-label": "Ваш приоритет №1",
+                "rec-service-label": "Рекомендуемое решение",
+                "send-results-btn": "Отправить результаты Виктории",
+                "cta-subtext": "Я проанализирую ваше узкое место и пришлю одну практическую рекомендацию в ЛС.",
+                "framework-badge": "Система Роста Бизнеса",
+                "framework-title": "Архитектура Масштабирования",
+                "service-1-title": "Diagnose — Операционный Аудит",
+                "service-1-desc": "Выявление скрытых заторов, мешающих росту. Детально разбираем команду, софт и процессы перед тем, как вы начнете тратить деньги на маркетинг.",
+                "service-1-step": "Шаг 1: Диагностика",
+                "service-2-title": "Build — Операционная система",
+                "service-2-desc": "Проектирование внутренней операционной системы: четких процессов, SOP, зон ответственности и правил работы команды без постоянного контроля основателя.",
+                "service-2-step": "Шаг 2: Систематизация",
+                "service-3-title": "Scale — Система выручки",
+                "service-3-desc": "Построение системы выручки на основе процессов продаж, CRM, автоматизации и LinkedIn для предсказуемого и измеримого роста.",
+                "service-3-step": "Шаг 3: Рост",
+                "bio-subtitle": "Fractional COO | Гданьск / Удаленно",
+                "bio-quote": "\"Бизнес не должен зависеть от постоянного участия основателя, чтобы нормально работать. Моя задача — создавать системы, которые позволяют ему расти понятно, последовательно и управляемо.\"",
+                "bio-cta": "Заказать операционный аудит",
+                "toast-success": "Результаты скопированы! Готовы к отправке Виктории в ЛС.",
+                "toast-failed": "Не удалось скопировать результаты.",
+                "chart-labels": ['Процесс продаж', 'Регламенты и SOP', 'Доставка услуг', 'Прозрачность метрик', 'Свобода фаундера']
+            }
+        };
+
+        // 5 Strict Dynamic Questions Data
+        const questionsData = {
+            en: [
+                {
+                    id: "sales",
+                    categoryName: "Revenue Process",
+                    question: "What usually happens when a new business opportunity enters your company?",
+                    options: [
+                        { score: 0, text: "Often gets lost", desc: "Follow-ups depend on memory, spreadsheets, or the founder." },
+                        { score: 1, text: "Usually handled", desc: "There is a process, but it is not always followed consistently." },
+                        { score: 2, text: "Clearly managed", desc: "Every opportunity has an owner, next step, and visible status." }
+                    ]
+                },
+                {
+                    id: "ops",
+                    categoryName: "Operations & SOPs",
+                    question: "How does your team know what to do and who is responsible?",
+                    options: [
+                        { score: 0, text: "They usually ask me", desc: "Responsibilities are unclear and work depends on verbal instructions." },
+                        { score: 1, text: "Some structure exists", desc: "Basic processes are documented, but exceptions still require management involvement." },
+                        { score: 2, text: "Roles and processes are clear", desc: "The team works through defined responsibilities, workflows, and SOPs." }
+                    ]
+                },
+                {
+                    id: "log",
+                    categoryName: "Client Delivery",
+                    question: "What happens after a client says “yes”?",
+                    options: [
+                        { score: 0, text: "Delivery becomes reactive", desc: "Handoffs are unclear and the team solves problems as they appear." },
+                        { score: 1, text: "Delivery usually works", desc: "The main steps are known, but delays and manual coordination still happen." },
+                        { score: 2, text: "Delivery is structured", desc: "Onboarding, handoffs, execution, and reporting follow a repeatable process." }
+                    ]
+                },
+                {
+                    id: "fin",
+                    categoryName: "Performance Visibility",
+                    question: "How quickly can you see what is working and what is not?",
+                    options: [
+                        { score: 0, text: "Mostly through assumptions", desc: "Information is scattered and decisions are based on incomplete data." },
+                        { score: 1, text: "After manual checking", desc: "Reports exist, but data must be collected or verified manually." },
+                        { score: 2, text: "At any time", desc: "Key sales, operational, and financial indicators are clearly visible." }
+                    ]
+                },
+                {
+                    id: "autonomy",
+                    categoryName: "Team Autonomy",
+                    question: "What would happen if you stepped away from daily operations for one week?",
+                    options: [
+                        { score: 0, text: "Work would slow down or stop", desc: "Important decisions, approvals, and information depend on me." },
+                        { score: 1, text: "The team would manage for a while", desc: "Routine work would continue, but important issues would wait for my return." },
+                        { score: 2, text: "The business would continue normally", desc: "The team can make decisions and execute within clear rules." }
+                    ]
+                }
+            ],
+            ru: [
+                {
+                    id: "sales",
+                    categoryName: "Процесс продаж",
+                    question: "Что обычно происходит, когда в вашу компанию поступает новая бизнес-возможность?",
+                    options: [
+                        { score: 0, text: "Часто теряется", desc: "Последующие действия зависят от памяти менеджеров, разрозненных таблиц или самого основателя." },
+                        { score: 1, text: "Обычно обрабатывается", desc: "Процесс есть, но он не всегда соблюдается последовательно и системно." },
+                        { score: 2, text: "Четко управляется", desc: "Каждая сделка имеет ответственного, понятный следующий шаг и наглядный статус." }
+                    ]
+                },
+                {
+                    id: "ops",
+                    categoryName: "Регламенты и SOP",
+                    question: "Как ваша команда узнает, что делать и кто за это отвечает?",
+                    options: [
+                        { score: 0, text: "Они обычно спрашивают меня", desc: "Обязанности размыты, работа строится на устных поручениях и тушении пожаров." },
+                        { score: 1, text: "Есть базовая структура", desc: "Основные процессы описаны, но исключения все равно требуют постоянного ручного вмешательства." },
+                        { score: 2, text: "Роли и процессы кристально ясны", desc: "Команда работает строго в соответствии с закрепленными ролями и SOP." }
+                    ]
+                },
+                {
+                    id: "log",
+                    categoryName: "Доставка услуг",
+                    question: "Что происходит сразу после того, как клиент соглашается на сделку?",
+                    options: [
+                        { score: 0, text: "Выполнение становится хаотичным", desc: "Процессы передачи клиента размыты, команда решает проблемы по мере их появления." },
+                        { score: 1, text: "Обычно все работает", desc: "Главные этапы известны, но задержки и ручные созвоны для координации все еще происходят." },
+                        { score: 2, text: "Процесс структурирован", desc: "Адаптация клиента, выполнение и отчетность идут по четкому повторяющемуся конвейеру." }
+                    ]
+                },
+                {
+                    id: "fin",
+                    categoryName: "Прозрачность метрик",
+                    question: "Как быстро вы можете увидеть, что в бизнесе работает, а что не приносит результатов?",
+                    options: [
+                        { score: 0, text: "В основном интуитивно", desc: "Информация разрознена по чатам, важные решения принимаются по неполным данным." },
+                        { score: 1, text: "После ручной сборки отчетов", desc: "Отчеты собираются, но данные нужно запрашивать у команды или верифицировать вручную." },
+                        { score: 2, text: "В любой момент времени", desc: "Ключевые показатели продаж, финансов и эффективности выведены на дашборд." }
+                    ]
+                },
+                {
+                    id: "autonomy",
+                    categoryName: "Свобода фаундера",
+                    question: "Что произойдет, если вы отойдете от ежедневных задач компании ровно на одну неделю?",
+                    options: [
+                        { score: 0, text: "Работа замедлится или встанет", desc: "Все ключевые решения, согласования и доступ к информации завязаны исключительно на мне." },
+                        { score: 1, text: "Команда справится какое-то время", desc: "Рутина продолжится нормально, но сложные ситуации будут стоять на паузе до моего возвращения." },
+                        { score: 2, text: "Бизнес продолжит стабильно расти", desc: "Команда обладает полномочиями принимать решения и действовать в рамках правил." }
+                    ]
+                }
+            ]
+        };
+
+        // Static parameters mapping bottleneck analytics
+        const scoreLevels = {
+            en: [
+                { max: 30, level: "Growth at Risk", desc: "Your business is currently relying heavily on manual coordination, individual knowledge, or founder involvement. Adding more leads may increase pressure without creating predictable growth." },
+                { max: 60, level: "Growth Constrained", desc: "Your business has some working processes, but inconsistent execution and limited visibility are likely slowing growth and creating avoidable revenue leaks." },
+                { max: 80, level: "Ready to Scale", desc: "Your operational foundation is developing well. A few specific bottlenecks still need to be removed before the business can scale consistently." },
+                { max: 100, level: "Scale Ready", desc: "Your business has a strong operational foundation. The next opportunity is to improve performance, automation, and revenue efficiency." }
+            ],
+            ru: [
+                { max: 30, level: "Рост под Угрозой", desc: "Бизнес слишком сильно зависит от ручной координации и личного участия фаундера. Наращивание рекламы сейчас просто разрушит процессы, а не увеличит прибыль." },
+                { max: 60, level: "Рост Ограничен", desc: "Некоторые процессы работают нормально, но отсутствие регламентов и прозрачных метрик замедляет компанию и создает скрытые утечки денег." },
+                { max: 80, level: "Почти Готов (с узкими местами)", desc: "Операционная база выстроена хорошо. Нужно устранить несколько точечных заторов, чтобы компания начала масштабироваться на автопилоте." },
+                { max: 100, level: "Готов к Масштабу", desc: "Ваш бизнес имеет прочный фундамент. Следующий шаг — точечная автоматизация, повышение маржинальности и RevOps." }
+            ]
+        };
+
+        const bottleneckDetails = {
+            en: {
+                sales: {
+                    title: "Opportunity Management",
+                    explanation: "New opportunities may be entering the business, but inconsistent ownership and follow-up make the final outcome unpredictable.",
+                    costs: ["Slower client onboarding", "Missed follow-ups & lost leads", "Unpredictable revenue pipeline"],
+                    priority: "Create one visible process that assigns every opportunity an owner, status, and next action.",
+                    service: "Revenue System Audit"
+                },
+                ops: {
+                    title: "Operational Execution",
+                    explanation: "Your team may understand the general goals, but unclear responsibilities and undocumented processes create inconsistent execution.",
+                    costs: ["Double work and human errors", "Extended task delivery times", "Heavy reliance on tribal knowledge"],
+                    priority: "Define ownership for recurring activities and document the highest-impact workflows.",
+                    service: "Operating System Design"
+                },
+                log: {
+                    title: "Client Delivery",
+                    explanation: "The transition from sale to execution may depend on manual coordination, creating delays, errors, or an inconsistent client experience.",
+                    costs: ["Client onboarding delays", "Frequent manual fire-fighting", "Reduced client lifetime value"],
+                    priority: "Map the complete client journey from signed agreement to final delivery and define each handoff.",
+                    service: "Workflow and SOP Design"
+                },
+                fin: {
+                    title: "Performance Visibility",
+                    explanation: "Important information may exist, but it is scattered across people, spreadsheets, or disconnected tools. This makes timely decisions difficult.",
+                    costs: ["Decisions based on gut-feeling", "Invisible cost overruns", "Difficulty measuring marketing ROI"],
+                    priority: "Define the small set of sales, delivery, and financial indicators needed for weekly management decisions.",
+                    service: "Operational Audit and Reporting Architecture"
+                },
+                autonomy: {
+                    title: "Founder Dependence",
+                    explanation: "Key decisions, approvals, and operational knowledge remain concentrated around the founder. This limits team autonomy and slows growth.",
+                    costs: ["Operational delays when out of office", "Reduced capacity to think strategically", "Highly bottlenecked scaling speed"],
+                    priority: "Identify the decisions that repeatedly return to the founder and establish clear decision rules and ownership.",
+                    service: "Operating System and Team Accountability Design"
+                }
+            },
+            ru: {
+                sales: {
+                    title: "Управление Возможностями",
+                    explanation: "Новые лиды и предложения поступают в компанию, но из-за отсутствия четких зон ответственности и прозрачного контроля финальная выручка остается непредсказуемой.",
+                    costs: ["Забытые переписки и упущенные клиенты", "Размытая воронка продаж", "Потери рекламных бюджетов"],
+                    priority: "Создать единый визуальный процесс, где каждая сделка имеет ответственного, статус и дату следующего контакта.",
+                    service: "Revenue System Audit (Аудит Процессов Выручки)"
+                },
+                ops: {
+                    title: "Операционное Исполнение",
+                    explanation: "Команда понимает глобальные цели, но размытые зоны ответственности и отсутствие регламентов (SOP) ведут к нестабильному качеству работы.",
+                    costs: ["Постоянные ошибки из-за человеческого фактора", "Затянутые сроки выполнения рутинных задач", "Уход сотрудника останавливает процессы"],
+                    priority: "Закрепить ответственных за регулярными бизнес-задачами и написать простые регламенты для ключевых процессов.",
+                    service: "Operating System Design (Проектирование Систем)"
+                },
+                log: {
+                    title: "Доставка Услуг Клиентам",
+                    explanation: "Передача клиента от продаж в исполнение завязана на ручной координации, что ведет к задержкам и неровному качеству сервиса.",
+                    costs: ["Долгая и болезненная адаптация новых клиентов", "Регулярное тушение пожаров руководителем", "Низкий показатель повторных покупок (LTV)"],
+                    priority: "Оцифровать путь клиента от момента оплаты до финальной сдачи работы и стандартизировать точки передачи.",
+                    service: "Workflow and SOP Design (Стандартизация Процессов)"
+                },
+                fin: {
+                    title: "Прозрачность Метрик",
+                    explanation: "Данные в компании собираются разрозненно, решения принимаются интуитивно из-за отсутствия единой панели мониторинга результатов.",
+                    costs: ["Убыточные направления работают незамеченными", "Сложно посчитать окупаемость рекламы (ROI)", "Ошибки планирования кассовых разрывов"],
+                    priority: "Выделить 5 главных метрик маркетинга, продаж и финансов для еженедельной оценки бизнеса.",
+                    service: "Operational Audit & Reporting Architecture (Аудит и Архитектура Метрик)"
+                },
+                autonomy: {
+                    title: "Зависимость от Основателя",
+                    explanation: "Все решения, согласования и процессы завязаны лично на фаундере. Команда боится или не может действовать без вашего одобрения.",
+                    costs: ["Заморозка сделок, пока вас нет на месте", "Отсутствие времени на стратегическое планирование", "Ваша скорость работы лимитирует скорость компании"],
+                    priority: "Выявить повторяющиеся согласования, которые заходят на вас, и прописать правила принятия решений для команды.",
+                    service: "Operating System and Team Accountability Design (Делегирование и Системы Контроля)"
+                }
+            }
+        };
+
+        // Global State Variables
+        let currentLang = 'en';
+        let currentStep = 0; // 0 = Intro, 1..5 = Question steps, 6 = Results screen
+        let selectedAnswers = {}; // Map storage category ID -> score value (0, 1, 2)
+        let radarChartInstance = null;
+
+        // Start Assessment Trigger
+        function startAssessment() {
+            currentStep = 1;
+            selectedAnswers = {};
+            updateAssessmentUI();
+        }
+
+        // Set Language configuration
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            // Toggle Switcher UI
+            document.getElementById('lang-en').className = lang === 'en' 
+                ? 'px-2.5 py-1 rounded-sm bg-brand-burgundy text-brand-white transition-all' 
+                : 'px-2.5 py-1 rounded-sm text-brand-burgundy/60 transition-all';
+            document.getElementById('lang-ru').className = lang === 'ru' 
+                ? 'px-2.5 py-1 rounded-sm bg-brand-burgundy text-brand-white transition-all' 
+                : 'px-2.5 py-1 rounded-sm text-brand-burgundy/60 transition-all';
+
+            // DOM Translations updates
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+
+            // Refresh UI depending on active state step
+            if (currentStep > 0 && currentStep <= 5) {
+                updateAssessmentUI();
+            } else if (currentStep === 6) {
+                renderResultsReport();
+            }
+        }
+
+        // Handle Back step routing
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateAssessmentUI();
+            } else {
+                // Exit back to intro
+                currentStep = 0;
+                document.getElementById('step-intro').classList.remove('hidden');
+                document.getElementById('step-question-container').classList.add('hidden');
+                document.getElementById('step-results').classList.add('hidden');
+            }
+        }
+
+        // Save selected score and advance
+        function selectOption(category, score) {
+            selectedAnswers[category] = score;
+            
+            // Highlight choice container card element visually
+            const options = questionsData[currentLang][currentStep - 1].options;
+            options.forEach(opt => {
+                const card = document.getElementById(`opt-card-${category}-${opt.score}`);
+                if (card) {
+                    if (opt.score === score) {
+                        card.className = "choice-card p-5 rounded-lg border-2 border-brand-burgundy bg-brand-burgundy/5 text-brand-burgundy cursor-pointer relative shadow-sm";
+                    } else {
+                        card.className = "choice-card p-5 rounded-lg border border-brand-silkDark bg-brand-white hover:border-brand-burgundy/50 text-brand-burgundy/90 cursor-pointer relative";
+                    }
+                }
+            });
+
+            // Unlock progression button
+            document.getElementById('next-btn').disabled = false;
+        }
+
+        // Handle progression triggers
+        function nextStep() {
+            if (currentStep < 5) {
+                currentStep++;
+                updateAssessmentUI();
+            } else {
+                currentStep = 6;
+                renderResultsReport();
+            }
+        }
+
+        // Main Quiz Interface Controller
+        function updateAssessmentUI() {
+            document.getElementById('step-intro').classList.add('hidden');
+            document.getElementById('step-results').classList.add('hidden');
+            document.getElementById('step-question-container').classList.remove('hidden');
+
+            // Set progress steps metrics
+            document.getElementById('current-step-num').innerText = currentStep;
+            const percentage = (currentStep / 5) * 100;
+            document.getElementById('progress-bar-fill').style.width = percentage + "%";
+
+            // Populate Questions content based on localized dataset
+            const qSet = questionsData[currentLang][currentStep - 1];
+            document.getElementById('assessment-question-text').innerText = qSet.question;
+
+            // Render choice option elements dynamically
+            const container = document.getElementById('choices-container');
+            container.innerHTML = "";
+
+            qSet.options.forEach(opt => {
+                const isSelected = selectedAnswers[qSet.id] === opt.score;
+                const cardClass = isSelected 
+                    ? "choice-card p-5 rounded-lg border-2 border-brand-burgundy bg-brand-burgundy/5 text-brand-burgundy cursor-pointer relative shadow-sm"
+                    : "choice-card p-5 rounded-lg border border-brand-silkDark bg-brand-white hover:border-brand-burgundy/50 text-brand-burgundy/90 cursor-pointer relative";
+
+                const wrapperHtml = `
+                    <div id="opt-card-${qSet.id}-${opt.score}" onclick="selectOption('${qSet.id}', ${opt.score})" class="${cardClass}">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-xs uppercase font-bold tracking-widest text-brand-gold">${opt.score === 0 ? 'Level 0' : opt.score === 1 ? 'Level 1' : 'Level 2'}</span>
+                                <h4 class="text-base font-bold mt-1">${opt.text}</h4>
+                                <p class="text-xs text-brand-burgundy/70 mt-1">${opt.desc}</p>
+                            </div>
+                            <div class="w-6 h-6 rounded-full border-2 border-brand-burgundy/30 flex items-center justify-center bg-brand-white">
+                                <div class="w-3.5 h-3.5 rounded-full ${isSelected ? 'bg-brand-burgundy' : ''}"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', wrapperHtml);
+            });
+
+            // Navigation lock management
+            document.getElementById('next-btn').disabled = selectedAnswers[qSet.id] === undefined;
+        }
+
+        // Renders complete personalized analytics report screen
+        function renderResultsReport() {
+            document.getElementById('step-intro').classList.add('hidden');
+            document.getElementById('step-question-container').classList.add('hidden');
+            document.getElementById('step-results').classList.remove('hidden');
+
+            // Calculate overall readiness score percentage
+            const maxScore = 10;
+            const currentScore = (selectedAnswers.sales || 0) + (selectedAnswers.ops || 0) + (selectedAnswers.log || 0) + (selectedAnswers.fin || 0) + (selectedAnswers.autonomy || 0);
+            const scorePercent = Math.round((currentScore / maxScore) * 100);
+
+            document.getElementById('final-score-percent').innerText = scorePercent + "%";
+
+            // Resolve score tier and localized descriptive text
+            const localizedTiers = scoreLevels[currentLang];
+            let matchingTier = localizedTiers[0];
+            for (const tier of localizedTiers) {
+                if (scorePercent <= tier.max) {
+                    matchingTier = tier;
+                    break;
+                }
+            }
+
+            document.getElementById('readiness-level-title').innerText = matchingTier.level;
+            document.getElementById('readiness-level-desc').innerText = matchingTier.desc;
+
+            // RESOLVE PRIMARY BOTTLENECK (Custom Order Prioritization mapping rules)
+            // Sequence: Autonomy (Founder Dependence) > Sales (Opportunities) > Execution (Ops) > Delivery (Logistics) > Visibility (Finance)
+            const resolvedPriorityMap = ['autonomy', 'sales', 'ops', 'log', 'fin'];
+            
+            // 1. Identify lowest score values (e.g. 0, then 1, then 2)
+            let lowestScore = 2;
+            resolvedPriorityMap.forEach(cat => {
+                const points = selectedAnswers[cat] || 0;
+                if (points < lowestScore) {
+                    lowestScore = points;
+                }
+            });
+
+            // 2. Filter list of keys having lowest score value
+            let lowestKeys = [];
+            resolvedPriorityMap.forEach(cat => {
+                const points = selectedAnswers[cat] || 0;
+                if (points === lowestScore) {
+                    lowestKeys.push(cat);
+                }
+            });
+
+            // 3. Select first matching bottleneck key based on structural tiebreak prioritization hierarchy rules
+            let resolvedBottleneckKey = 'autonomy';
+            for (const k of resolvedPriorityMap) {
+                if (lowestKeys.includes(k)) {
+                    resolvedBottleneckKey = k;
+                    break;
+                }
+            }
+
+            // Populate data based on resolved bottleneck selection
+            const bData = bottleneckDetails[currentLang][resolvedBottleneckKey];
+            document.getElementById('bottleneck-title').innerText = bData.title;
+            document.getElementById('bottleneck-explanation').innerText = bData.explanation;
+            document.getElementById('first-priority-desc').innerText = bData.priority;
+            document.getElementById('rec-service-desc').innerText = bData.service;
+
+            // Generate cost analysis lists
+            const listContainer = document.getElementById('cost-bullets');
+            listContainer.innerHTML = "";
+            bData.costs.forEach(cost => {
+                listContainer.insertAdjacentHTML('beforeend', `<li>${cost}</li>`);
+            });
+
+            // Render/Update canvas chart component in context
+            renderCanvasChart();
+        }
+
+        // Initialize Plotly/Chart.js Radar rendering loop context
+        function renderCanvasChart() {
+            const ctx = document.getElementById('resultRadarChart').getContext('2d');
+            
+            if (radarChartInstance) {
+                radarChartInstance.destroy();
+            }
+
+            const values = [
+                selectedAnswers.sales || 0,
+                selectedAnswers.ops || 0,
+                selectedAnswers.log || 0,
+                selectedAnswers.fin || 0,
+                selectedAnswers.autonomy || 0
+            ];
+
+            radarChartInstance = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: translations[currentLang]["chart-labels"],
+                    datasets: [{
+                        label: 'Operational Score',
+                        data: values,
+                        backgroundColor: 'rgba(223, 186, 115, 0.2)', // Gold accent with transparency
+                        borderColor: '#DFBA73',                      // Gold stroke border
+                        borderWidth: 2,
+                        pointBackgroundColor: '#500B1D',             // Contrast Burgundy bullets
+                        pointBorderColor: '#DFBA73',
+                        pointHoverBackgroundColor: '#DFBA73',
+                        pointHoverBorderColor: '#500B1D'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 2,
+                            ticks: {
+                                stepSize: 1,
+                                color: 'rgba(80, 11, 29, 0.4)', // Dark Burgundy tint for scale text
+                                backdropColor: 'transparent',
+                                font: { size: 9 }
+                            },
+                            angleLines: { color: 'rgba(80, 11, 29, 0.1)' },
+                            grid: { color: 'rgba(80, 11, 29, 0.1)' },
+                            pointLabels: {
+                                color: '#500B1D', // Clear burgundy labels
+                                font: {
+                                    family: 'Plus Jakarta Sans',
+                                    size: 10,
+                                    weight: 'bold'
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Copy dynamic parameters and launch LinkedIn messaging DM redirect flow
+        function sendResultsToVictoria() {
+            const totalScore = Math.round((((selectedAnswers.sales || 0) + (selectedAnswers.ops || 0) + (selectedAnswers.log || 0) + (selectedAnswers.fin || 0) + (selectedAnswers.autonomy || 0)) / 10) * 100);
+            
+            // Build bottleneck keys matching translations
+            const resolvedPriorityMap = ['autonomy', 'sales', 'ops', 'log', 'fin'];
+            let lowestScore = 2;
+            resolvedPriorityMap.forEach(cat => {
+                const points = selectedAnswers[cat] || 0;
+                if (points < lowestScore) lowestScore = points;
+            });
+            let lowestKeys = [];
+            resolvedPriorityMap.forEach(cat => {
+                const points = selectedAnswers[cat] || 0;
+                if (points === lowestScore) lowestKeys.push(cat);
+            });
+            let resolvedBottleneckKey = 'autonomy';
+            for (const k of resolvedPriorityMap) {
+                if (lowestKeys.includes(k)) {
+                    resolvedBottleneckKey = k;
+                    break;
+                }
+            }
+
+            const bData = bottleneckDetails[currentLang][resolvedBottleneckKey];
+            
+            // Resolve lowest scoring list formats
+            let lowestLabels = [];
+            const categoryLabelMap = {
+                sales: translations[currentLang]["chart-labels"][0],
+                ops: translations[currentLang]["chart-labels"][1],
+                log: translations[currentLang]["chart-labels"][2],
+                fin: translations[currentLang]["chart-labels"][3],
+                autonomy: translations[currentLang]["chart-labels"][4]
+            };
+            resolvedPriorityMap.forEach(cat => {
+                if ((selectedAnswers[cat] ?? 0) <= 1) {
+                    lowestLabels.push(categoryLabelMap[cat]);
+                }
+            });
+
+            if (lowestLabels.length === 0) {
+                // If everything is Level 2, fall back to showing weakest category based on lowest absolute scores
+                lowestLabels.push(categoryLabelMap[resolvedBottleneckKey]);
+            }
+
+            let messageBody = "";
+            if (currentLang === 'en') {
+                messageBody = `Hi Victoria,\n\nI completed the Business Growth Readiness Assessment.\n\nMy score: ${totalScore}%\nMy primary bottleneck: ${bData.title}\n\nMy lowest-scoring areas:\n${lowestLabels.map(item => `• ${item}`).join('\n')}\n\nI would be interested in your initial recommendation.`;
+            } else {
+                messageBody = `Привет, Виктория!\n\nЯ прошел оценку готовности бизнеса к росту.\n\nМой результат: ${totalScore}%\nГлавное узкое место: ${bData.title}\n\nСлабые зоны системы:\n${lowestLabels.map(item => `• ${item}`).join('\n')}\n\nМне интересны твои стартовые рекомендации по устранению этих заторов.`;
+            }
+
+            // Copy to clipboard execution
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = messageBody;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            
+            try {
+                const success = document.execCommand('copy');
+                if (success) {
+                    showToast(translations[currentLang]["toast-success"]);
+                    // Trigger LinkedIn Redirect in new window container
+                    setTimeout(() => {
+                        window.open("https://www.linkedin.com/in/viktoria-kashtanova/", "_blank");
+                    }, 1200);
+                } else {
+                    showToast(translations[currentLang]["toast-failed"]);
+                }
+            } catch (err) {
+                showToast(translations[currentLang]["toast-failed"]);
+            }
+            
+            document.body.removeChild(tempTextArea);
+        }
+
+        // Show Toast Notifications
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-text').innerText = message;
+            toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            }, 4000);
+        }
+
+        // Start initial setups on page rendering
+        window.onload = function() {
+            setLanguage('en');
+        }
+    </script>
+</body>
+</html>
