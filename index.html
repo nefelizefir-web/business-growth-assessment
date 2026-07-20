@@ -581,6 +581,20 @@
 
         const bottleneckDetails = {
             en: {
+                multiple: {
+                    title: "Multiple Connected Bottlenecks",
+                    explanation: "Several areas received the same lowest score. This means the business is not being held back by one isolated issue, but by connected weaknesses that reinforce each other.",
+                    costs: ["Problems move from one department to another", "Fixing only one area may not improve the full system", "Growth remains inconsistent until the connected gaps are addressed together"],
+                    priority: "Start with a short operational audit to identify the sequence in which the weak areas should be fixed.",
+                    service: "Operational Audit and Systems Roadmap"
+                },
+                healthy: {
+                    title: "No Critical Bottleneck",
+                    explanation: "Your answers show a strong and balanced operating foundation. The business is not currently dependent on one critical weak point.",
+                    costs: ["No urgent operational risk detected", "Focus can shift from repair to optimization", "Next gains will come from automation, margin, and RevOps"],
+                    priority: "Choose one measurable improvement area and optimize it without disrupting the systems that already work.",
+                    service: "Performance Optimization and RevOps"
+                },
                 sales: {
                     title: "Opportunity Management",
                     explanation: "New opportunities may be entering the business, but inconsistent ownership and follow-up make the final outcome unpredictable.",
@@ -618,6 +632,20 @@
                 }
             },
             ru: {
+                multiple: {
+                    title: "Несколько связанных узких мест",
+                    explanation: "Несколько зон получили одинаково низкий балл. Это значит, что рост ограничивает не одна отдельная проблема, а связанные слабые места, которые усиливают друг друга.",
+                    costs: ["Проблемы переходят из одного отдела в другой", "Исправление только одной зоны может не изменить систему целиком", "Рост остается нестабильным, пока связанные проблемы не устранены вместе"],
+                    priority: "Начните с короткого операционного аудита, чтобы определить правильную последовательность исправлений.",
+                    service: "Operational Audit and Systems Roadmap (Операционный аудит и дорожная карта)"
+                },
+                healthy: {
+                    title: "Критического узкого места нет",
+                    explanation: "Ваши ответы показывают сильную и сбалансированную операционную систему. Сейчас бизнес не зависит от одной критически слабой зоны.",
+                    costs: ["Срочных операционных рисков не выявлено", "Фокус можно перенести с исправления проблем на оптимизацию", "Следующий рост дадут автоматизация, маржинальность и RevOps"],
+                    priority: "Выберите одну измеримую зону улучшения и оптимизируйте ее, не разрушая уже работающие процессы.",
+                    service: "Performance Optimization and RevOps (Оптимизация производительности)"
+                },
                 sales: {
                     title: "Управление Возможностями",
                     explanation: "Новые лиды и предложения поступают в компанию, но из-за отсутствия четких зон ответственности и прозрачного контроля финальная выручка остается непредсказуемой.",
@@ -815,35 +843,25 @@
             document.getElementById('readiness-level-title').innerText = matchingTier.level;
             document.getElementById('readiness-level-desc').innerText = matchingTier.desc;
 
-            // RESOLVE PRIMARY BOTTLENECK (Custom Order Prioritization mapping rules)
-            // Sequence: Autonomy (Founder Dependence) > Sales (Opportunities) > Execution (Ops) > Delivery (Logistics) > Visibility (Finance)
-            const resolvedPriorityMap = ['autonomy', 'sales', 'ops', 'log', 'fin'];
-            
-            // 1. Identify lowest score values (e.g. 0, then 1, then 2)
-            let lowestScore = 2;
-            resolvedPriorityMap.forEach(cat => {
-                const points = selectedAnswers[cat] || 0;
-                if (points < lowestScore) {
-                    lowestScore = points;
-                }
-            });
+            // RESOLVE PRIMARY BOTTLENECK
+            const categoryOrder = ['sales', 'ops', 'log', 'fin', 'autonomy'];
+            const categoryScores = categoryOrder.map(cat => selectedAnswers[cat] ?? 0);
+            const lowestScore = Math.min(...categoryScores);
+            const lowestKeys = categoryOrder.filter(cat => (selectedAnswers[cat] ?? 0) === lowestScore);
 
-            // 2. Filter list of keys having lowest score value
-            let lowestKeys = [];
-            resolvedPriorityMap.forEach(cat => {
-                const points = selectedAnswers[cat] || 0;
-                if (points === lowestScore) {
-                    lowestKeys.push(cat);
-                }
-            });
+            let resolvedBottleneckKey;
 
-            // 3. Select first matching bottleneck key based on structural tiebreak prioritization hierarchy rules
-            let resolvedBottleneckKey = 'autonomy';
-            for (const k of resolvedPriorityMap) {
-                if (lowestKeys.includes(k)) {
-                    resolvedBottleneckKey = k;
-                    break;
-                }
+            // 100%: there is no critical bottleneck.
+            if (categoryOrder.every(cat => selectedAnswers[cat] === 2)) {
+                resolvedBottleneckKey = 'healthy';
+            }
+            // One clear weakest area.
+            else if (lowestKeys.length === 1) {
+                resolvedBottleneckKey = lowestKeys[0];
+            }
+            // Two or more equally weak areas: do not invent a winner.
+            else {
+                resolvedBottleneckKey = 'multiple';
             }
 
             // Populate data based on resolved bottleneck selection
@@ -932,24 +950,20 @@
         function sendResultsToVictoria() {
             const totalScore = Math.round((((selectedAnswers.sales || 0) + (selectedAnswers.ops || 0) + (selectedAnswers.log || 0) + (selectedAnswers.fin || 0) + (selectedAnswers.autonomy || 0)) / 10) * 100);
             
-            // Build bottleneck keys matching translations
-            const resolvedPriorityMap = ['autonomy', 'sales', 'ops', 'log', 'fin'];
-            let lowestScore = 2;
-            resolvedPriorityMap.forEach(cat => {
-                const points = selectedAnswers[cat] || 0;
-                if (points < lowestScore) lowestScore = points;
-            });
-            let lowestKeys = [];
-            resolvedPriorityMap.forEach(cat => {
-                const points = selectedAnswers[cat] || 0;
-                if (points === lowestScore) lowestKeys.push(cat);
-            });
-            let resolvedBottleneckKey = 'autonomy';
-            for (const k of resolvedPriorityMap) {
-                if (lowestKeys.includes(k)) {
-                    resolvedBottleneckKey = k;
-                    break;
-                }
+            // Resolve result using the same rules as the on-screen report.
+            const categoryOrder = ['sales', 'ops', 'log', 'fin', 'autonomy'];
+            const categoryScores = categoryOrder.map(cat => selectedAnswers[cat] ?? 0);
+            const lowestScore = Math.min(...categoryScores);
+            const lowestKeys = categoryOrder.filter(cat => (selectedAnswers[cat] ?? 0) === lowestScore);
+
+            let resolvedBottleneckKey;
+
+            if (categoryOrder.every(cat => selectedAnswers[cat] === 2)) {
+                resolvedBottleneckKey = 'healthy';
+            } else if (lowestKeys.length === 1) {
+                resolvedBottleneckKey = lowestKeys[0];
+            } else {
+                resolvedBottleneckKey = 'multiple';
             }
 
             const bData = bottleneckDetails[currentLang][resolvedBottleneckKey];
@@ -963,15 +977,16 @@
                 fin: translations[currentLang]["chart-labels"][3],
                 autonomy: translations[currentLang]["chart-labels"][4]
             };
-            resolvedPriorityMap.forEach(cat => {
-                if ((selectedAnswers[cat] ?? 0) <= 1) {
-                    lowestLabels.push(categoryLabelMap[cat]);
-                }
+            lowestKeys.forEach(cat => {
+                lowestLabels.push(categoryLabelMap[cat]);
             });
 
             if (lowestLabels.length === 0) {
-                // If everything is Level 2, fall back to showing weakest category based on lowest absolute scores
-                lowestLabels.push(categoryLabelMap[resolvedBottleneckKey]);
+                lowestLabels.push(
+                    currentLang === 'en'
+                        ? 'No critical weak area detected'
+                        : 'Критических слабых зон не выявлено'
+                );
             }
 
             let messageBody = "";
